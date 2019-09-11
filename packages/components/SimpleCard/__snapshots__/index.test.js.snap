@@ -39,6 +39,7 @@ exports[`Simple Card should render correctly 1`] = `
           <Button
             active={false}
             aria-label="Edit button"
+            className="edit-button"
             disabled={false}
             onClick={[Function]}
             size="sm"
@@ -86,6 +87,7 @@ exports[`Simple Card should render correctly 1`] = `
           <Button
             active={false}
             aria-label="Delete button"
+            className="delete-button"
             disabled={false}
             onClick={[Function]}
             size="sm"

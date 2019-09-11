@@ -24,7 +24,7 @@ const SimpleCard = (props) => {
   };
 
   const handleEditText = () => {
-    props.handleEdit(props.id);
+    // props.handleEdit(props.id);
   };
 
   return (
@@ -45,6 +45,7 @@ const SimpleCard = (props) => {
                 variant="outline-secondary"
                 size="sm"
                 aria-label="Edit button"
+                className="edit-button"
               >
                 <FontAwesomeIcon icon={ faPen } />
               </Button>
@@ -57,6 +58,7 @@ const SimpleCard = (props) => {
                 variant="outline-secondary"
                 size="sm"
                 aria-label="Delete button"
+                className="delete-button"
               >
                 <FontAwesomeIcon icon={ faTrash }/>
               </Button>
@@ -76,7 +78,7 @@ const SimpleCard = (props) => {
 };
 
 SimpleCard.propTypes = {
-  key: PropTypes.string.isRequired,
+  key: PropTypes.string,
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,

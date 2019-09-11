@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List component Should render correctly with Simple Cards and Transcript Cards 1`] = `
+<section
+  style={
+    Object {
+      "height": "75vh",
+      "overflow": "scroll",
+    }
+  }
+>
+  <SearchBar
+    handleSearch={[Function]}
+  />
+  <SimpleCard
+    description="This is a sample card description. This is fun!"
+    display={true}
+    handleDelete={[Function]}
+    handleEdit={[Function]}
+    id="1234"
+    key="abc123"
+    title="Sample Simple Card Title One"
+    url="/projects/1/transcripts/1234"
+  />
+  <SimpleCard
+    description="This is a sample card description. This is fun!"
+    display={true}
+    handleDelete={[Function]}
+    handleEdit={[Function]}
+    id="5678"
+    key="def456"
+    title="Sample Simple Card Title Two"
+    url="/projects/1/transcripts/5678"
+  />
+</section>
+`;
+
+exports[`List component Should render correctly with Simple Cards and Transcript Cards 2`] = `
+<section
+  style={
+    Object {
+      "height": "75vh",
+      "overflow": "scroll",
+    }
+  }
+>
+  <SearchBar
+    handleSearch={[Function]}
+  />
+  <TranscriptCard
+    description="This transcript has finished processing."
+    display={true}
+    handleDelete={[Function]}
+    handleEdit={[Function]}
+    id={1}
+    key="transcript_key_1"
+    status="done"
+    subtitle="This transcript has finished processing."
+    title="Title - Done Transcript"
+    url="/projects/1/transcripts/"
+  />
+  <TranscriptCard
+    description="This transcript is still being generated."
+    display={true}
+    handleDelete={[Function]}
+    handleEdit={[Function]}
+    id={2}
+    key="transcript_key_2"
+    status="in-progress"
+    subtitle="This transcript is still being generated."
+    title="Title - In Progress Transcript"
+    url="/projects/1/transcripts/"
+  />
+  <TranscriptCard
+    description="Transcript generation failed for this card."
+    display={true}
+    errorMessage="Something has gone wrong with your transcription"
+    handleDelete={[Function]}
+    handleEdit={[Function]}
+    id={3}
+    key="transcript_key_3"
+    status="error"
+    subtitle="Transcript generation failed for this card."
+    title="Title - Error Transcript"
+    url="/projects/1/transcripts/"
+  />
+</section>
+`;

@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import addons, { mockChannel } from '@storybook/addons';
 import PropTypes from 'prop-types';
 import SimpleCard from '../SimpleCard';
 import SearchBar from './SearchBar';
 import TranscriptCard from '../TranscriptCard';
 
 const List = (props) => {
+
+  addons.setChannel(mockChannel());
 
   const [ items, setItems ] = useState(props.items);
 

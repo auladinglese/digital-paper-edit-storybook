@@ -103,6 +103,7 @@ const TranscriptCard = (props) => {
                 onClick={ () => handleEditClick() }
                 variant="outline-secondary"
                 size="sm"
+                className="edit-button"
               >
                 <FontAwesomeIcon icon={ faPen } />
               </Button>
@@ -114,6 +115,7 @@ const TranscriptCard = (props) => {
                 onClick={ () => handleDeleteClick() }
                 variant="outline-secondary"
                 size="sm"
+                className="delete-button"
               >
                 <FontAwesomeIcon icon={ faTrash } />
               </Button>
@@ -141,7 +143,7 @@ const TranscriptCard = (props) => {
 };
 
 TranscriptCard.propTypes = {
-  key: PropTypes.string.isRequired,
+  key: PropTypes.string,
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
