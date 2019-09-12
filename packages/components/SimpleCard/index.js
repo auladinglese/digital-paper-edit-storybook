@@ -19,7 +19,11 @@ const SimpleCard = (props) => {
     const confirmationPrompt = window.confirm(confirmDeleteText);
 
     if (confirmationPrompt) {
-      props.handleDelete ? props.handleDelete(props.id) : alert(cancelDeleteText);
+      if (props.handleDelete) {
+        props.handleDelete(props.id);
+      } else {
+        alert(cancelDeleteText);
+      }
     }
   };
 
@@ -76,7 +80,7 @@ const SimpleCard = (props) => {
 };
 
 SimpleCard.propTypes = {
-  key: PropTypes.string.isRequired,
+  key: PropTypes.string,
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
