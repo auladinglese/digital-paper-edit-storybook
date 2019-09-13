@@ -39,7 +39,7 @@ const items = [
   },
 ];
 
-storiesOf('ProgrammeScript', module)
+storiesOf('ProgrammeScriptContainer', module)
   .add('Default', () =>
     <ProgrammeScriptContainer
       items={ items }
