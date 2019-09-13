@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
 import PropTypes from 'prop-types';
 import Modal from 'react-bootstrap/Modal';
 import ItemForm from '../ItemForm/index.js';
@@ -27,6 +26,7 @@ ItemFormModal.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string,
   description: PropTypes.string,
+  type: PropTypes.string,
   showModal: PropTypes.bool.isRequired,
   modalTitle: PropTypes.string.isRequired,
   handleSaveForm: PropTypes.func.isRequired,

@@ -33,7 +33,6 @@ describe('List component', () => {
 
   it('Should correctly render multiple TranscriptCard components', () => {
     const mountedTranscriptCardList = mount(<MemoryRouter><List handleDelete={ onDelete } items={ transItems } /></MemoryRouter>);
-    expect(transcriptCardList.find(TranscriptCard).length).toBe(3);
     expect(mountedTranscriptCardList.find(TranscriptCard).length).toBe(3);
     expect(mountedTranscriptCardList.find('Button').find({ variant: 'success' }).length).toBe(1);
     expect(mountedTranscriptCardList.find('Button').find({ variant: 'info' }).length).toBe(1);
