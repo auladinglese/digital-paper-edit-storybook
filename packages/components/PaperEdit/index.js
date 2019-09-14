@@ -12,7 +12,7 @@ import {
 import Breadcrumb from '../Breadcrumb/';
 import PropTypes from 'prop-types';
 
-import Transcripts from '../Transcripts/';
+// import Transcripts from '../Transcripts/';
 import ProgrammeScript from '../ProgrammeScript/';
 
 const PaperEdit = (props) => {
@@ -131,10 +131,9 @@ const PaperEdit = (props) => {
             style={ { display: isProgramScriptShown ? 'block' : 'none' } }
           >
             <ProgrammeScript
-              projectId={ projectId }
-              papereditId={ papereditId }
+              programme={ props.programme }
+              handleUpdate={ props.handleUpdate }
               transcripts={ props.transcripts }
-              videoHeight={ props.videoHeight }
             />
           </Col>
         </Row>
@@ -147,7 +146,8 @@ PaperEdit.defaultProps = {
   projectTitle: '',
   programmeTitle: '',
   transcripts: [],
-  labelsOptions: []
+  labelsOptions: [],
+  programme: []
 };
 
 PaperEdit.propTypes = {
@@ -156,7 +156,9 @@ PaperEdit.propTypes = {
   projectTitle: PropTypes.string,
   programmeTitle: PropTypes.string,
   transcripts: PropTypes.any,
-  labelsOptions: PropTypes.any
+  labelsOptions: PropTypes.any,
+  programme: PropTypes.any,
+  handleUpdate: PropTypes.any,
 };
 
 export default PaperEdit;

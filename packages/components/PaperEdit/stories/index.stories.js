@@ -1,43 +1,51 @@
 import React from 'react';
-
+import StoryRouter from 'storybook-react-router';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import PaperEdit from '../index.js';
 
-export const handleReorderActions = action('Handle reorder');
-export const handleDeleteActions = action('Handle delete');
-export const handleEditActions = action('Handle edit');
+export const handleUpdate = action('Handle update',
+  () => {
+    return { test:1 };
+  });
 
-const items = [
-  {
-    type: 'title',
-    text: 'An immense Achievement'
-  },
-  {
-    type: 'paper-cut',
-    id: 1,
-    speaker: 'Mr Loud',
-    words: [ { text:'Greatest day of my life was when I wrote this text.', start: 0, end: 1 } ]
-  },
-  {
-    type: 'note',
-    text: 'Maybe a little bit obnoxious'
-  },
-  {
-    type: 'insert',
-    text: 'Insert New Selection here'
-  },
-  {
-    type: 'paper-cut',
-    id: 2,
-    speaker: 'Mrs Loud',
-    words: [ { text:'Greatest day of my life was when I spoke this text.', start: 0, end: 1 } ]
-  },
-  {
-    type: 'voice-over',
-    text: 'link: wonderful times of the Loud family'
-  },
-];
+const programme = {
+  elements:
+  [
+    {
+      type: 'title',
+      text: 'An immense Achievement'
+    },
+    {
+      type: 'paper-cut',
+      id: 1,
+      speaker: 'Mr Loud',
+      words: [ { text:'Greatest day of my life was when I wrote this text.', start: 0, end: 1 } ]
+    },
+    {
+      type: 'note',
+      text: 'Maybe a little bit obnoxious'
+    },
+    {
+      type: 'paper-cut',
+      id: 2,
+      speaker: 'Mrs Loud',
+      words: [ { text:'Greatest day of my life was when I spoke this text.', start: 0, end: 1 } ]
+    },
+    {
+      type: 'voice-over',
+      text: 'link: wonderful times of the Loud family'
+    },
+  ],
+  title: 'Something'
+};
+const annotation = {
+  'id':'1idcjw29xii80000ird74yb19swa',
+  'start':14.38,
+  'end':18.14,
+  'labelId':'129cjw29xii80000ird74yb19swa',
+  'note':'optional example text description for an annotation - TEST 2'
+};
 
 const transcripts = [
   {
@@ -88,13 +96,24 @@ const transcripts = [
   }
 ];
 
+const match = {
+  params: {
+    projectId: 1,
+    papereditId: 1
+  }
+};
+
 storiesOf('PaperEdit', module)
+  .addDecorator(StoryRouter())
   .add('Default', () =>
     <PaperEdit
       programmeScriptTitle={ 'programme script title' }
       projectTitle={ 'project title' }
+      programme={ programme }
       transcripts={ transcripts }
       labelOptions={ [] }
       videoHeight={ '10em' }
+      match={ match }
+      handleUpdate={ handleUpdate }
     />
   );
