@@ -1,7 +1,7 @@
 {
   "name": "@bbc/digital-paper-edit-react-components",
   "version": "1.2.13",
-  "description": "",
+  "description": "React Component library for DPE",
   "babel": {
     "presets": [
       "react-app"
@@ -25,7 +25,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "author": "",
+  "author": "Eimi Okuno <eimi.okuno@bbc.co.uk>",
   "license": "ISC",
   "dependencies": {
     "@babel/cli": "^7.5.5",
@@ -80,5 +80,7 @@
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
     "storybook-react-router": "^1.0.5"
-  }
+  },
+  "repository": "https://github.com/bbc/digital-paper-edit-storybook.git",
+  "private": false
 }
