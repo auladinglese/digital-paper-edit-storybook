@@ -5,6 +5,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge';
+import { createConfirmation } from 'react-confirm';
+
 import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -15,13 +17,12 @@ import {
   faPen
 } from '@fortawesome/free-solid-svg-icons';
 
-const TranscriptCard = (props) => {
-
+const TranscriptCard = props => {
   const handleDeleteClick = () => {
     const confirmDeleteText = 'Are you sure you want to delete?';
     const cancelDeleteText = 'Cancelled delete';
 
-    const confirmationPrompt = confirm(confirmDeleteText);
+    const confirmationPrompt = createConfirmation(confirmDeleteText);
 
     if (confirmationPrompt) {
       if (props.handleDeleteItem) {
@@ -38,31 +39,28 @@ const TranscriptCard = (props) => {
 
   const iconStatus = {
     'in-progress': 'info',
-    'done': 'success',
-    'error': 'danger'
+    done: 'success',
+    error: 'danger'
   };
 
   const setDescription = () => {
     if (props.status === 'error') {
       return (
         <>
-          <Alert variant='danger'>
+          <Alert variant="danger">
             <FontAwesomeIcon icon={ faExclamationTriangle } />
             {props.errorMessage}
           </Alert>
-          <Badge variant='danger'>
-            Error
-          </Badge>
+          <Badge variant="danger">Error</Badge>
         </>
       );
-    }
-    else {
-      const badgeText = (props.status.charAt(0).toUpperCase() + props.status.slice(1)).replace('-', ' ');
+    } else {
+      const badgeText = (
+        props.status.charAt(0).toUpperCase() + props.status.slice(1)
+      ).replace('-', ' ');
 
-      return (
-        <Badge variant={ iconStatus[props.status] }>{badgeText}</Badge>
-      );
-    };
+      return <Badge variant={ iconStatus[props.status] }>{badgeText}</Badge>;
+    }
   };
 
   const setStatusIcon = () => {
@@ -81,17 +79,24 @@ const TranscriptCard = (props) => {
     } else {
       return (
         <Button variant={ iconStatus[props.status] } size="sm" disabled>
-          <FontAwesomeIcon icon={ props.status === 'danger' ? faExclamationTriangle : faCheck } />
+          <FontAwesomeIcon
+            icon={ props.status === 'danger' ? faExclamationTriangle : faCheck }
+          />
         </Button>
       );
-    };
+    }
   };
 
-  const title = props.status && props.status === 'done' ? <a href={ `${ props.url }` }> {props.title}</a> : props.title;
+  const title =
+    props.status && props.status === 'done' ? (
+      <a href={ `${ props.url }` }> {props.title}</a>
+    ) : (
+      props.title
+    );
 
   return (
     <Card
-      border={ props.status && props.status === 'danger' ? status : null }
+      border={ props.status && props.status === 'danger' ? props.status : null }
       style={ { width: '100%', marginBottom: '2em' } }
     >
       <Card.Body>
@@ -123,9 +128,7 @@ const TranscriptCard = (props) => {
               </Button>
             </Card.Link>
           </Col>
-          <Col xs={ 1 }>
-            {setStatusIcon()}
-          </Col>
+          <Col xs={ 1 }>{setStatusIcon()}</Col>
         </Row>
         <Row>
           <Col xs={ 12 }>
@@ -135,9 +138,7 @@ const TranscriptCard = (props) => {
           </Col>
         </Row>
         <Row>
-          <Col xs={ 12 }>
-            {setDescription()}
-          </Col>
+          <Col xs={ 12 }>{setDescription()}</Col>
         </Row>
       </Card.Body>
     </Card>
@@ -160,7 +161,7 @@ TranscriptCard.propTypes = {
 TranscriptCard.defaultProps = {
   title: '',
   description: '',
-  subtitle: '',
+  subtitle: ''
 };
 
 export default TranscriptCard;

@@ -1,13 +1,13 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import StoryRouter from 'storybook-react-router';
 import Breadcrumb from '../index.js';
-
+import { linkTo } from '@storybook/addon-links';
+import StoryRouter from 'storybook-react-router';
 export const breadcrumbItems = {
   projects: [
     {
       name: 'Projects',
-      link: '/projects',
+      link: '/projects'
     },
     {
       name: 'Example project name'
@@ -23,7 +23,7 @@ export const breadcrumbItems = {
       link: '/projects/the-sample'
     },
     {
-      name: 'PaperEdits',
+      name: 'PaperEdits'
     },
     {
       name: 'Example programme title'
@@ -32,23 +32,27 @@ export const breadcrumbItems = {
 };
 
 storiesOf('Breadcrumb', module)
-  .addDecorator(StoryRouter())
+  .addDecorator(
+    StoryRouter(
+      {
+        '/': linkTo('Projects', 'projects'),
+        '/projects/*': linkTo('Linked stories', 'projects/something'),
+        '/paperedits/*': linkTo('Linked stories', 'projects/something')
+      },
+      { initialEntries: [ '/' ] }
+    )
+  )
   .add('Projects', () => {
     return (
       <section style={ { height: '90vh', overflow: 'scroll' } }>
-        <Breadcrumb
-          items = { breadcrumbItems.projects }
-        />
+        <Breadcrumb items={ breadcrumbItems.projects } />
       </section>
     );
   })
   .add('Paper Edits', () => {
     return (
       <section style={ { height: '90vh', overflow: 'scroll' } }>
-        <Breadcrumb
-          items={ breadcrumbItems.paperEdits }
-        />
+        <Breadcrumb items={ breadcrumbItems.paperEdits } />
       </section>
-
     );
   });
