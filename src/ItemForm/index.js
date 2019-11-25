@@ -4,21 +4,19 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-const ItemForm = (props) => {
-
+const ItemForm = props => {
   const [ description, setDescription ] = useState('');
   const [ isValidated, setIsValidated ] = useState(false);
   const [ title, setTitle ] = useState('');
 
-  useEffect (() => {
+  useEffect(() => {
     setDescription(props.description);
     setTitle(props.title);
 
-    return () => {
-    };
+    return () => {};
   }, [ props.description, props.title ]);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     const form = event.currentTarget;
     event.preventDefault();
     event.stopPropagation();
@@ -38,11 +36,7 @@ const ItemForm = (props) => {
   };
 
   return (
-
-    <Form noValidate
-      validated={ isValidated }
-      onSubmit={ handleSubmit }
-    >
+    <Form noValidate validated={ isValidated } onSubmit={ handleSubmit }>
       <Form.Group controlId="formBasicEmail">
         <Form.Label>Title</Form.Label>
         <Form.Control
@@ -51,14 +45,12 @@ const ItemForm = (props) => {
           name="title"
           placeholder="Enter a project title"
           value={ title }
-          onChange={ (e) => setTitle(e.target.value) }
+          onChange={ e => setTitle(e.target.value) }
         />
-        <Form.Text className="text-muted">
-            Choose a title
-        </Form.Text>
+        <Form.Text className="text-muted">Choose a title</Form.Text>
         <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         <Form.Control.Feedback type="invalid">
-            Please choose a title
+          Please choose a title
         </Form.Control.Feedback>
       </Form.Group>
 
@@ -69,16 +61,16 @@ const ItemForm = (props) => {
           placeholder="Enter a project description"
           value={ description }
           name="description"
-          onChange={ (e) => setDescription(e.target.value) }
+          onChange={ e => setDescription(e.target.value) }
         />
         <Form.Text className="text-muted">
-            Choose an optional description
+          Choose an optional description
         </Form.Text>
         <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
       </Form.Group>
       <Modal.Footer>
         <Button variant="primary" type="submit">
-            Save
+          Save
         </Button>
       </Modal.Footer>
     </Form>
@@ -91,7 +83,7 @@ ItemForm.propTypes = {
   description: PropTypes.string,
   showModal: PropTypes.bool,
   modalTitle: PropTypes.string,
-  handleSaveForm: PropTypes.func.isRequired,
+  handleSaveForm: PropTypes.func.isRequired
 };
 
 ItemForm.defaultProps = {

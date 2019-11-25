@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import React, { useRef } from 'react';
-import VideoContextPreview from './VideoContextPreview';
+import { VideoContextPreview } from './VideoContextPreview';
 import PropTypes from 'prop-types';
 
-const PreviewCanvas = (props) => {
+const PreviewCanvas = props => {
   const canvasRef = useRef();
 
   return (
@@ -24,4 +24,4 @@ PreviewCanvas.defaultProps = {
   playlist: []
 };
 
-export default PreviewCanvas;
+export { PreviewCanvas };

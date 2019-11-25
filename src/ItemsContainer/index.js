@@ -135,4 +135,4 @@ ItemsContainer.defaultProps = {
   type: 'Project'
 };
 
-export default ItemsContainer;
+export { ItemsContainer };

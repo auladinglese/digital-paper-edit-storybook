@@ -1,48 +1,47 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import Breadcrumb from "react-bootstrap/Breadcrumb";
-import { Route, Link } from "react-router-dom";
-import { LinkContainer } from "react-router-bootstrap";
+import BreadcrumbBS from 'react-bootstrap/Breadcrumb';
+import { Route, Link } from 'react-router-dom';
 
-const CustomBreadcrumb = props => {
+const Breadcrumb = props => {
   const breadcrumbs = props.items.map(item => {
     if (item.link) {
       return (
-        <LinkContainer key={item.name} to={item.link}>
-          <Breadcrumb.Item>{item.name}</Breadcrumb.Item>
-        </LinkContainer>
+        <Link key={ item.name } to={ item.link }>
+          <BreadcrumbBS.Item>{item.name}</BreadcrumbBS.Item>
+        </Link>
       );
     } else {
       return (
-        <Breadcrumb.Item key={item.name} active>
+        <BreadcrumbBS.Item key={ item.name } active>
           {item.name}
-        </Breadcrumb.Item>
+        </BreadcrumbBS.Item>
       );
     }
   });
 
   return (
     <div>
-      <Breadcrumb>{breadcrumbs}</Breadcrumb>
+      <BreadcrumbBS>{breadcrumbs}</BreadcrumbBS>
     </div>
   );
 };
 
-CustomBreadcrumb.propTypes = {
+Breadcrumb.propTypes = {
   items: PropTypes.array
 };
 
-CustomBreadcrumb.defaultProps = {
+Breadcrumb.defaultProps = {
   items: [
     {
-      name: "Projects",
-      link: "/projects"
+      name: 'Projects',
+      link: '/projects'
     },
     {
-      name: "Sample Project Name"
+      name: 'Sample Project Name'
     }
   ]
 };
 
-export default CustomBreadcrumb;
+export { Breadcrumb };

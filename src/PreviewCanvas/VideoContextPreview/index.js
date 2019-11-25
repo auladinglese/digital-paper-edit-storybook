@@ -5,10 +5,10 @@ import Row from 'react-bootstrap/Row';
 import PropTypes from 'prop-types';
 import VideoContext from 'videocontext';
 
-const VideoContextPreview = (props) => {
+const VideoContextPreview = props => {
   const [ videoContext, setVideoContext ] = useState();
 
-  const updateVideoContext = (media) => {
+  const updateVideoContext = media => {
     media.forEach(({ type, sourceStart, start, duration, src }) => {
       const node = videoContext[type](src, sourceStart);
       node.startAt(start);
@@ -30,14 +30,13 @@ const VideoContextPreview = (props) => {
     if (props.canvasRef && props.canvasRef.current) {
       setVideoContext(new VideoContext(props.canvasRef.current));
     }
-
   }, [ props.canvasRef ]);
 
   if (videoContext) {
     updateVideoContext(props.playlist);
   }
 
-  const secondsToHHMMSSFormat = (seconds) => {
+  const secondsToHHMMSSFormat = seconds => {
     return new Date(seconds * 1000).toISOString().substr(11, 8);
   };
 
@@ -57,17 +56,30 @@ const VideoContextPreview = (props) => {
         className={ 'justify-content-center' }
         style={ { backgroundColor: 'lightgrey' } }
       >
-        <VideoContextProgressBar videoContext={ videoContext }/>
+        <VideoContextProgressBar videoContext={ videoContext } />
       </Row>
       <Row style={ { marginTop: '0.4em' } }>
         <Controls
-          handlePlay={ videoContext ? () => videoContext.play() : () => console.log('handlePlay') }
-          handlePause={ videoContext ? () => videoContext.pause() : () => console.log('handlePause') }
-          handleStop={ videoContext ? () => handleStop() : () => console.log('handleStop') }
+          handlePlay={
+            videoContext
+              ? () => videoContext.play()
+              : () => console.log('handlePlay')
+          }
+          handlePause={
+            videoContext
+              ? () => videoContext.pause()
+              : () => console.log('handlePause')
+          }
+          handleStop={
+            videoContext ? () => handleStop() : () => console.log('handleStop')
+          }
         />
       </Row>
       <Row className={ 'justify-content-center' }>
-        Total duration: {videoContext ? secondsToHHMMSSFormat(videoContext.duration) : '00:00:00'}
+        Total duration:{' '}
+        {videoContext
+          ? secondsToHHMMSSFormat(videoContext.duration)
+          : '00:00:00'}
       </Row>
     </>
   );
@@ -84,4 +96,4 @@ VideoContextPreview.defaultProps = {
   playlist: []
 };
 
-export default VideoContextPreview;
+export { VideoContextPreview };

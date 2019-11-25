@@ -9,8 +9,7 @@ const playIcon = <FontAwesomeIcon icon={ faPlay } />;
 const pauseIcon = <FontAwesomeIcon icon={ faPause } />;
 const stopIcon = <FontAwesomeIcon icon={ faStop } />;
 
-const Controls = (props) => {
-
+const Controls = props => {
   const [ isPlaying, setIsPlaying ] = useState(false);
 
   const handlePlay = () => {
@@ -37,19 +36,17 @@ const Controls = (props) => {
           variant="outline-secondary"
           onClick={ isPlaying ? handlePause : handlePlay }
         >
-          { isPlaying ? pauseIcon : playIcon }
+          {isPlaying ? pauseIcon : playIcon}
         </Button>
       </Col>
-      <Col
-        sm={ 6 }
-      >
+      <Col sm={ 6 }>
         <Button
           size="sm"
           block
           variant="outline-secondary"
           onClick={ handleStop }
         >
-          { stopIcon }
+          {stopIcon}
         </Button>
       </Col>
     </>

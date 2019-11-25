@@ -5,12 +5,17 @@ import VideoContextProgressBar from './VideoContextProgressBar';
 describe('VideoContextProgressBar', () => {
   const mockVideoContext = {};
 
-  it('should render shallowly', () => { const component = shallow(<VideoContextProgressBar videoContext={ mockVideoContext } />);
+  it('should render shallowly', () => {
+    const component = shallow(
+      <VideoContextProgressBar videoContext={ mockVideoContext } />
+    );
     expect(component).toMatchSnapshot();
   });
 
   it('should fully render', () => {
-    const component = mount(<VideoContextProgressBar videoContext={ mockVideoContext }/>);
+    const component = mount(
+      <VideoContextProgressBar videoContext={ mockVideoContext } />
+    );
     expect(component).toMatchSnapshot();
 
     component.unmount();

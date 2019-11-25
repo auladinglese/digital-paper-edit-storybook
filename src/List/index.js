@@ -4,8 +4,7 @@ import SimpleCard from '../SimpleCard';
 import TranscriptCard from '../TranscriptCard';
 import cuid from 'cuid';
 
-const List = (props) => {
-
+const List = props => {
   const [ items, setItems ] = useState([]);
 
   useEffect(() => {
@@ -13,12 +12,10 @@ const List = (props) => {
       setItems(props.items);
     }
 
-    return () => {
-
-    };
+    return () => {};
   }, [ props.items ]);
 
-  const listItems = items.map((item) => {
+  const listItems = items.map(item => {
     const key = 'card-' + cuid();
     if (item.display && item.status) {
       return (
@@ -29,8 +26,7 @@ const List = (props) => {
           handleDeleteItem={ props.handleDeleteItem }
         />
       );
-    }
-    else if (item.display) {
+    } else if (item.display) {
       return (
         <SimpleCard
           { ...item }
@@ -38,7 +34,8 @@ const List = (props) => {
           handleEditItem={ props.handleEditItem }
           handleDeleteItem={ props.handleDeleteItem }
         />
-      );}
+      );
+    }
 
     return null;
   });
@@ -53,7 +50,7 @@ const List = (props) => {
 List.propTypes = {
   items: PropTypes.array.isRequired,
   handleEditItem: PropTypes.func.isRequired,
-  handleDeleteItem: PropTypes.func.isRequired,
+  handleDeleteItem: PropTypes.func.isRequired
 };
 
-export default List;
+export { List };
